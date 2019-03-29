@@ -1,17 +1,13 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const jwt = require('jsonwebtoken');
-//const mongoose = require('mongoose');
 const User = require('./models/User');
 const withAuth = require('./middleware');
-const cors= require("cors")// de truyen du lieu giua cac port khac nhau
-
 
 const app = express();
-app.use(cors());
+
 const secret = 'mysecretsshhh';
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,7 +16,7 @@ app.use(cookieParser());
 
 
 
- app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', function (req, res) {
@@ -91,5 +87,4 @@ app.get('/checkToken', withAuth, function(req, res) {
   res.sendStatus(200);
 });
 
-
-  app.listen(process.env.PORT || '3000' , () => console.log("Server Started"));
+app.listen(process.env.PORT || 3003);
