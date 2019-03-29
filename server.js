@@ -11,7 +11,7 @@ const cors= require("cors")// de truyen du lieu giua cac port khac nhau
 
 
 const app = express();
-
+app.use(cors());
 const secret = 'mysecretsshhh';
 
 app.use(bodyParser.urlencoded({ extended: false }));
